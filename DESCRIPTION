@@ -1,0 +1,11 @@
+Package: weather.forecasting
+Title: The package for forecasting the weather in R
+Version: 0.0.0.9000
+Authors@R: 
+    person("Mona", "Moslemzadeh", , "monmo538@student.liu.se", role = c("aut", "cre"))
+    person("Adeel", "Ahmad", , "adeah090@student.liu.se", role = c("aut", "cre"))
+Description: The package uses model to handle forecasting weather functions and connect to a web API.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
