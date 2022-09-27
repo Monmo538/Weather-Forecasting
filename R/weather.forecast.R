@@ -12,14 +12,12 @@ library("jsonlite")
 #'
 weather_forcast <-
   function(location, weatherUnit) {
-
     # Add check for input validation
     # add try catch for api response
     # handle other response
-
     tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1h&units=",weatherUnit,"&apikey=rW9818R9IwR95rndf6JzGbWMnFkNsSTR", sep = "")
     print(tempUrl)
-    res <- VERB("GET", url = tempUrl)
+    res <- httr::VERB("GET", url = tempUrl)
     resp <- content(res, 'text')
     jsonRespParsed<- fromJSON(resp)
     return(as.data.frame(jsonRespParsed$data$timelines$intervals))
