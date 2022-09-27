@@ -1,20 +1,29 @@
 library("httr")
 library("jsonlite")
-library("dplyr")
-library("ggplot2")
-library("lubridate")
-library("testthat")
 
-#' @Title Get the weather information sources used between specified datetimes for a specified region.
-#' @param location R data frame.
-#' @param fields fields number.
-#' @return
+#' @title Get the weather information sources used between specified datetimes for a specified region.
+#' @param location string with longitude and latitude eg 58.4108,15.6214
+#' @param weatherUnit string with unit for weather like metric or imperial
+#' @return Data frame of temperature of provided location
 #' @export
 #'
 #' @examples
-#' 
+#' weather_forcast("58.4108,15.6214", "metric")
+#'
 weather_forcast <-
-  function() {
-    res <- VERB("GET", url = "https://api.tomorrow.io/v4/timelines?location=58.4108, 15.6214&fields=temperature&timesteps=1h&units=metric&apikey=rW9818R9IwR95rndf6JzGbWMnFkNsSTR")
-    cat(content(res, 'text'))
+  function(location, weatherUnit) {
+
+    # Add check for input validation
+    # add try catch for api response
+    # handle other response
+
+    tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1h&units=",weatherUnit,"&apikey=rW9818R9IwR95rndf6JzGbWMnFkNsSTR", sep = "")
+    print(tempUrl)
+    res <- VERB("GET", url = tempUrl)
+    resp <- content(res, 'text')
+    jsonRespParsed<- fromJSON(resp)
+    return(as.data.frame(jsonRespParsed$data$timelines$intervals))
   }
+
+
+
