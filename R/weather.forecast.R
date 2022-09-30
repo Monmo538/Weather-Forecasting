@@ -11,8 +11,8 @@ library("jsonlite")
 #' weather_forcast("58.4108,15.6214", "metric")
 #'
 weather_forcast <-
-  function(location, weatherUnit) {
-    if(missing(location) || missing(weatherUnit)) {
+  function(location, weatherUnit, apiKey) {
+    if(missing(location) || missing(apiKey) || missing(weatherUnit)) {
       stop("Param missing")
     }
     if (!(weatherUnit == 'metric' || weatherUnit == 'imperial')) {
@@ -21,8 +21,9 @@ weather_forcast <-
 
     result <- tryCatch({
       # tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
-      tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=rW9818R9IwR95rndf6JzGbWMnFkNsSTR", sep = "")
+      tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", apiKey, sep = "")
 
+      print(tempUrl)
       res <- httr::GET(tempUrl)
 
       resp <- httr::content(res, 'text')
