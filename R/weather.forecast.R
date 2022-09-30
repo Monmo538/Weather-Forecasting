@@ -12,19 +12,66 @@ library("jsonlite")
 #'
 weather_forcast <-
   function(location, weatherUnit) {
+    if(missing(location) || missing(weatherUnit)) {
+      stop("Param missing")
+    }
+    if (!(is.character(location) && length(location) > 1)) {
+      stop("Invalid param location")
+    }
+    if (!(weatherUnit == 'metric' || weatherUnit == 'imperial')) {
+      stop("Invalid param weatherUnit")
+    }
 
-
-    # Add check for input validation
-    # add try catch for api response
-    # handle other response
-    # modify URL
-    tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
-    print(tempUrl)
-    res <- httr::VERB("GET", url = tempUrl)
-    resp <- httr::content(res, 'text')
-    jsonRespParsed<- jsonlite::fromJSON(resp)
-    return(as.data.frame(jsonRespParsed$data$timelines$intervals))
+        result <- tryCatch({
+      tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
+      res <- httr::VERB("GET", url = tempUrl)
+      resp <- httr::content(res, 'text')
+      jsonRespParsed<- jsonlite::fromJSON(resp)
+      return(as.data.frame(jsonRespParsed$data$timelines$intervals))
+    }, warning = function(war) {
+      print("WARNING:")
+      print(war)
+    }, error = function(err) {
+      print("Error::")
+      print(err)
+    })
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
