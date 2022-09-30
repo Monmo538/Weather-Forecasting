@@ -15,14 +15,11 @@ weather_forcast <-
     if(missing(location) || missing(weatherUnit)) {
       stop("Param missing")
     }
-    if (!(is.character(location) && length(location) > 1)) {
-      stop("Invalid param location")
-    }
     if (!(weatherUnit == 'metric' || weatherUnit == 'imperial')) {
       stop("Invalid param weatherUnit")
     }
 
-        result <- tryCatch({
+    result <- tryCatch({
       tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
       res <- httr::VERB("GET", url = tempUrl)
       resp <- httr::content(res, 'text')
