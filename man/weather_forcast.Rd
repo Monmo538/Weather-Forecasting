@@ -4,12 +4,14 @@
 \alias{weather_forcast}
 \title{Get the weather information sources used between specified datetimes for a specified region.}
 \usage{
-weather_forcast(location, weatherUnit)
+weather_forcast(location, weatherUnit, apiKey)
 }
 \arguments{
 \item{location}{string with longitude and latitude eg 58.4108,15.6214}
 
 \item{weatherUnit}{string with unit for weather like metric or imperial}
+
+\item{apiKey}{string apiKey}
 }
 \value{
 Data frame of temperature of provided location

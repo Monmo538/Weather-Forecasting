@@ -4,6 +4,7 @@ library("jsonlite")
 #' @title Get the weather information sources used between specified datetimes for a specified region.
 #' @param location string with longitude and latitude eg 58.4108,15.6214
 #' @param weatherUnit string with unit for weather like metric or imperial
+#' @param apiKey string apiKey
 #' @return Data frame of temperature of provided location
 #' @export
 #'
