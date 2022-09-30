@@ -1,10 +1,9 @@
-test_that("Check that column 1 is startTime", {
-  expect_equal(colnames(weather_forcast("58.4108,15.6214", "metric"))[1], 'startTime')
-})
 
-test_that("Check that column 2 is values", {
+test_that("Check that columns are alright", {
+  expect_equal(colnames(weather_forcast("58.4108,15.6214", "metric"))[1], 'startTime')
   expect_equal(colnames(weather_forcast("58.4108,15.6214", "metric"))[2], 'values')
 })
+
 
 
 test_that("number of column with wrong input = 0", {

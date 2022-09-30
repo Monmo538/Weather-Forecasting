@@ -21,6 +21,8 @@ weather_forcast <-
 
     result <- tryCatch({
       tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
+      # tempUrl <- sprintf("https://api.tomorrow.io/v4/timelines?location=%s&fields=temperature&timesteps=1d&units=%s&apikey=%s", location, weatherUnit, Sys.getenv("apikey"))
+
       res <- httr::VERB("GET", url = tempUrl)
       resp <- httr::content(res, 'text')
       jsonRespParsed<- jsonlite::fromJSON(resp)
