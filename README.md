@@ -15,10 +15,10 @@ This package connect to a https://tomorrow.io API to collect the last 7 days to 
 library(weather.forecasting)
 ```
 
-### weather_forcast function
-This function gives 2 arguments, "location" and "weatherUnit", connect with given API and return the temperature of the selected city based on the selected unit. The coordinatin includes Longtitude and Latiutude of each city.
+This function gives 3 arguments, "location", "weatherUnit" and "your api key", connect with given API and return the temperature of the selected city based on the selected unit. The coordinatin includes Longtitude and Latiutude of each city.
 It will return the data frame for the wather for given city.
-```{r setup}
-data <- weather_forcast("58.4108,15.6214", "metric")
+```{r}
+data <- weather_forcast("58.4108,15.6214", "metric", "Your-API-Key")
 ```
+
 
