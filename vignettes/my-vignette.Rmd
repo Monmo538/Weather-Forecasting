@@ -27,7 +27,7 @@ library(weather.forecasting)
 This function gives 2 arguments, "location" and "weatherUnit", connect with given API and return the temperature of the selected city based on the selected unit. The coordinatin includes Longtitude and Latiutude of each city.
 It will return the data frame for the wather for given city.
 ```{r}
-data <- weather_forcast("58.4108,15.6214", "metric")
+data <- weather_forcast("58.4108,15.6214", "metric", "Your-API-Key")
 ```
 
 
