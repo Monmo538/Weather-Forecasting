@@ -1,10 +1,18 @@
-# weather.forecasting
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/Monmo538/weather.forecasting/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Monmo538/weather.forecasting/actions/workflows/R-CMD-check.yaml)
-  <!-- badges: end -->
-
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ## About the Package
 This package connect to a https://tomorrow.io API to collect the last 7 days to next 15 days of the temperature of given cities. It should be noted that the temperature could be in Celsius and Fahrenheit.
@@ -21,4 +29,5 @@ It will return the data frame for the wather for given city.
 ```{r setup}
 data <- weather_forcast("58.4108,15.6214", "metric")
 ```
+
 
