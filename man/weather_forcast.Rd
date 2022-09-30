@@ -20,6 +20,6 @@ Data frame of temperature of provided location
 Get the weather information sources used between specified datetimes for a specified region.
 }
 \examples{
-weather_forcast("58.4108,15.6214", "metric")
+weather_forcast("58.4108,15.6214", "metric", "apiKey")
 
 }

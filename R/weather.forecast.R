@@ -9,7 +9,7 @@ library("jsonlite")
 #' @export
 #'
 #' @examples
-#' weather_forcast("58.4108,15.6214", "metric")
+#' weather_forcast("58.4108,15.6214", "metric", "apiKey")
 #'
 weather_forcast <-
   function(location, weatherUnit, apiKey) {
