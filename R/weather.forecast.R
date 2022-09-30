@@ -15,6 +15,7 @@ weather_forcast <-
     # Add check for input validation
     # add try catch for api response
     # handle other response
+    # modify URL
     tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=rW9818R9IwR95rndf6JzGbWMnFkNsSTR", sep = "")
     print(tempUrl)
     res <- httr::VERB("GET", url = tempUrl)
