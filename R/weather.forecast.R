@@ -1,6 +1,3 @@
-library("httr")
-library("jsonlite")
-
 #' @title Get the weather information sources used between specified datetimes for a specified region.
 #' @param location string with longitude and latitude eg 58.4108,15.6214
 #' @param weatherUnit string with unit for weather like metric or imperial
@@ -21,8 +18,9 @@ weather_forcast <-
     }
 
     result <- tryCatch({
-      # tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", Sys.getenv("apikey"), sep = "")
       tempUrl <- paste("https://api.tomorrow.io/v4/timelines?location=",location,"&fields=temperature&timesteps=1d&units=",weatherUnit,"&apikey=", apiKey, sep = "")
+
+      tempUrl <- toString(tempUrl)
 
       print(tempUrl)
       res <- httr::GET(tempUrl)
@@ -38,42 +36,3 @@ weather_forcast <-
       print(err)
     })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
